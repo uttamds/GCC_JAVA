@@ -1,0 +1,28 @@
+import java.io.*;
+
+public class BufferedStreamExample {
+    public static void main(String[] args) {
+        String filename = "example.txt";
+        
+        // Writing to a file using BufferedWriter
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            writer.write("Hello, Buffered Streams!");
+            writer.newLine();
+            writer.write("This is a simple example.");
+            System.out.println("Data written to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        // Reading from a file using BufferedReader
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            System.out.println("Reading from file:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
